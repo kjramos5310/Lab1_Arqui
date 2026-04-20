@@ -1,0 +1,34 @@
+PERSONA (anteriormente AUTOR):
+    - id
+    - nombre
+    - apellido
+    - fecha_nacimiento
+    - nacionalidad
+    - correo_electronico
+    - esAutor (TINYINT 0=usuario, 1=autor creador de libros)
+
+LIBRO:
+    - id
+    - titulo
+    - isbn
+    - anio_publicacion
+    - edicion
+    - autor_id
+    FOREIGN KEY (autor_id) REFERENCES persona(id) WHERE esAutor = 1
+
+PRESTAMO:
+    - id
+    - usuario_id
+    - libro_id
+    - fecha_prestamo
+    - fecha_devolucion_esperada
+    - fecha_devolucion_real
+    - estado (activo, devuelto, vencido)
+    FOREIGN KEY (usuario_id) REFERENCES persona(id) WHERE esAutor = 0
+    FOREIGN KEY (libro_id) REFERENCES libro(id)
+
+NOTAS DE DISEÑO:
+- Se utiliza herencia en BD con discriminador (esAutor) en lugar de tabla separada
+- Una persona con esAutor=1 puede crear libros
+- Una persona con esAutor=0 puede hacer préstamos de libros
+- No se duplican datos entre tabla de autores y usuarios
