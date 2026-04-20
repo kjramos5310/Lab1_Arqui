@@ -355,10 +355,4 @@ locust -f test/locust_escenario_4.py --host=http://localhost:3000
 
 Acceder a la interfaz web de Locust en: **http://localhost:8089**
 
-Configuración recomendada para cada escenario:
-| Escenario | Usuarios | Spawn Rate | Duración |
-|---|---|---|---|
-| 1 — CRUD | 20 | 5/s | 2 min |
-| 2 — Búsqueda | 30 | 10/s | 2 min |
-| 3 — Historial | 25 | 5/s | 2 min |
-| 4 — Ciclo Completo | 15 | 3/s | 3 min |
+
