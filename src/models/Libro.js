@@ -8,6 +8,11 @@ const Libro = {
         return rows;
     },
 
+    findById: async (id) => {
+        const [rows] = await db.query('SELECT l.*, a.nombre, a.apellido FROM libro l JOIN persona a ON l.autor_id = a.id WHERE l.id = ?', [id]);
+        return rows[0] || null;
+    },
+
     createLibro : async ({ titulo, isbn, anio_publicacion, edicion, autor_id }) => {
         console.log("[MODEL] Libro.createLibro - Creando libro con datos:", { titulo, isbn, anio_publicacion, edicion, autor_id });
         const [result] = await db.query(

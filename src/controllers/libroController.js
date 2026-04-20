@@ -14,6 +14,19 @@ const getLibros = async (req, res) => {
     }
 };
 
+const getLibroById = async (req, res) => {
+    try {
+        const libro = await Libro.findById(req.params.id);
+        if (!libro) {
+            return res.status(404).json({ error: 'Libro no encontrado' });
+        }
+        res.json(libro);
+    } catch (error) {
+        console.error("[CONTROLLER] getLibroById - Error:", error.message);
+        res.status(500).json({ error: 'Error al obtener el libro' });
+    }
+};
+
 const createLibro = async (req, res) => {
     try {
         console.log("[CONTROLLER] createLibro - Body recibido:", req.body);
@@ -85,6 +98,7 @@ const updateLibro = async (req, res) => {
 
 module.exports = {
     getLibros,
+    getLibroById,
     createLibro,
     deleteLibro,
     updateLibro

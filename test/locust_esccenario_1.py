@@ -28,7 +28,8 @@ class Escenario1(HttpUser):
             "apellido": "Apellido",
             "fecha_nacimiento": "1990-01-01",
             "nacionalidad": f"nacionalidad{random.randint(100, 999)}",
-            "correo_electronico": f"correo_{random.randint(101, 1000)}@example.com"
+            "correo_electronico": f"correo_{random.randint(101, 1000)}@example.com",
+            "esAutor": 1
         }
         print(f"[LOCUST] createAutor - Enviando: {new_autor}")
         with self.client.post("/api/autores", json=new_autor, catch_response=True) as response:
@@ -51,7 +52,8 @@ class Escenario1(HttpUser):
                     "apellido": "Apellido Actualizado",
                     "fecha_nacimiento": "1990-01-01",
                     "nacionalidad": f"nacionalidad{random.randint(100, 999)}",
-                    "correo_electronico": f"correo_actualizado_{random.randint(101, 1000)}@example.com"
+                    "correo_electronico": f"correo_actualizado_{random.randint(101, 1000)}@example.com",
+                    "esAutor": 1
                 }
                 print(f"[LOCUST] updateAutor - Enviando: {updated_autor}")
                 with self.client.put(f"/api/autores/{autor_id}", json=updated_autor, catch_response=True) as response:

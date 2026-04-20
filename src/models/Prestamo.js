@@ -16,6 +16,21 @@ const Prestamo = {
         return rows;
     },
 
+    findById: async (id) => {
+        const [rows] = await db.query(`
+            SELECT p.*, 
+                   pers.nombre as usuario_nombre, 
+                   pers.apellido as usuario_apellido,
+                   l.titulo as libro_titulo,
+                   l.autor_id
+            FROM prestamo p
+            JOIN persona pers ON p.usuario_id = pers.id
+            JOIN libro l ON p.libro_id = l.id
+            WHERE p.id = ?
+        `, [id]);
+        return rows[0] || null;
+    },
+
     findByUsuarioId: async (usuarioId) => {
         const [rows] = await db.query(`
             SELECT p.*,

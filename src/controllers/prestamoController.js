@@ -13,6 +13,19 @@ const getPrestamos = async (req, res) => {
     }
 };
 
+const getPrestamoById = async (req, res) => {
+    try {
+        const prestamo = await Prestamo.findById(req.params.id);
+        if (!prestamo) {
+            return res.status(404).json({ error: 'Préstamo no encontrado' });
+        }
+        res.json(prestamo);
+    } catch (error) {
+        console.error("[CONTROLLER] getPrestamoById - Error:", error.message);
+        res.status(500).json({ error: 'Error al obtener el préstamo' });
+    }
+};
+
 const getPrestamosPorUsuario = async (req, res) => {
     try {
         const { id } = req.params;
@@ -135,6 +148,7 @@ const getPrestamosPorUsuarioArray = async (req, res) => {
 
 module.exports = {
     getPrestamos,
+    getPrestamoById,
     getPrestamosPorUsuario,
     getPrestamosPorUsuarioArray,
     createPrestamo,
