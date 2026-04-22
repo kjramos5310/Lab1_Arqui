@@ -1,0 +1,70 @@
+/* Variables y Temática global (Dark-Glass Premium) */
+:root {
+  --bg-color: #0b1120;
+  --glass-bg: rgba(30, 41, 59, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --accent-color: #3b82f6;
+  --text-primary: #f1f5f9;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-color);
+  background-image: radial-gradient(circle at top, rgba(30,58,138,0.4), transparent 50%);
+  color: var(--text-primary);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+}
+
+/* Navbar de cristal */
+.st-navbar .p-menubar {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  padding: 0.5rem 1.5rem;
+}
+
+/* Contenedores Glassmorphism (Tarjetas) */
+.glass-card {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(10px) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: 14px !important;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3) !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.4) !important;
+  border-color: rgba(255,255,255,0.2) !important;
+}
+
+/* Modales y Botones PrimeReact Anpassados */
+.p-button {
+  border-radius: 8px !important;
+}
+
+.p-datatable .p-datatable-header,
+.p-datatable .p-datatable-thead > tr > th,
+.p-datatable .p-datatable-tbody > tr {
+  background: var(--glass-bg) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--glass-border) !important;
+}
+
+.p-dialog .p-dialog-header {
+  background: #1e293b !important;
+  color: white !important;
+}
+.p-dialog .p-dialog-content {
+  background: #0f172a !important;
+  color: #fff !important;
+}
+
+.layout-content {
+  max-width: 1400px;
+  margin: 0 auto;
+}
